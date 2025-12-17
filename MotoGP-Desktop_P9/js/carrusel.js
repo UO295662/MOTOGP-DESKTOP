@@ -59,8 +59,6 @@ class Carrusel {
         const circuito = this.#busqueda.split(', ')[1] || "Circuito";
         
 
-        const $article = $("<article>");
-        
         const $h2 = $("<h2>").text(`Imágenes del circuito de ${circuito}`);
         const fotoActual = this.#fotos[this.#actual];
         const $img = $("<img>").attr({
@@ -68,10 +66,9 @@ class Carrusel {
             "alt": fotoActual.title || "Foto de Flickr"
         });
 
-        $article.append($h2);
-        $article.append($img);
-        
-        $container.append($article);
+        $container.append($h2);
+        $container.append($img);
+    
         setInterval(this.#cambiarFotografia.bind(this), 3000);
     }
 
