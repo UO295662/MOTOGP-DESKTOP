@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+    <title>Perfil de Altimetría del Circuito</title>
+    <style>
+        .poly { fill: #add8e6; stroke: #00008b; stroke-width: 2; }
+        .label { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+        .label-y { text-anchor: end; }
+    </style>
+
+    <!-- Polígono del perfil de altimetría -->
+    <polygon class="poly" points="60,440 60.00,220.00 114.59,220.00 158.13,140.00 167.20,140.00 175.90,200.00 212.87,300.00 288.13,140.00 316.73,60.00 471.08,200.00 482.79,200.00 537.80,300.00 601.69,380.00 627.94,400.00 680.56,320.00 692.86,340.00 717.81,320.00 784.59,440.00 799.43,420.00 838.61,380.00 851.74,320.00 940.00,320.00 940,440" />
+
+    <!-- Etiquetas de los ejes -->
+    <text class="label" x="500.0" y="490">Distancia (metros)</text>
+    <text class="label" transform="translate(15, 250.0) rotate(-90)">Altitud (metros)</text>
+</svg>

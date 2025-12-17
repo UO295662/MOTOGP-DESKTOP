@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>MOTOGP-Circuito</title>
+    <meta name="author" content="Gael Horta Calzada" />
+    <meta name="description" content="Información sobre el circuito de MotoGP" />
+    <meta name="keywords" content="MotoGP, circuito, jerez" />
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="icon" href="multimedia/favicon.ico"> 
+    <script src="js/circuito.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+    <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="index.html" title="Inicio MotoGPDekstop">Inicio</a>
+        <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="circuito.html" title="Circuito MotoGPDekstop" class="active">Circuito</a>
+        <a href="meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+        <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+    
+    <p>Estás en: <a href="index.html">Inicio</a> >> <strong>Circuito</strong></p>
+    
+    <main>
+        <h2>Circuito de MotoGP-Desktop</h2>
+
+        <p>Selecciona archivo html:</p>
+        <input type="file" accept=".html,.htm,.xml" title="Selector de archivo del circuito">
+
+        <p>Selecciona archivo svg:</p>
+        <input type="file" accept=".svg" title="Selector de archivo de altimetría">
+        
+        <p>Selecciona archivo kml:</p>
+        <input type="file" accept=".kml" title="Selector de archivo KML del mapa">
+
+
+        <section>
+            <h3>Contenido del Circuito</h3>
+            <p>Esperando archivo ...</p>
+        </section>
+        
+        <section>
+            <h3>Altimetría</h3>
+            <p>Esperando archivo ...</p>
+        </section>
+
+        <h3>Mapa del Circuito</h3>
+            <p>Esperando archivo ...</p>
+        <div></div>
+    </main>
+    
+    <script>
+        const circuito = new Circuito();
+        const cargadorSVG = new CargadorSVG();
+        const cargadorKML = new CargadorKML();
+    </script>
+</body>
+</html>

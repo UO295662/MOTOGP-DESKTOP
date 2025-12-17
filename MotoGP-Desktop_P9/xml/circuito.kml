@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Circuito de Jérez</name>
+    <Style id="yellowLine">
+      <LineStyle>
+        <color>7f00ffff</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Centro del Circuito</name>
+      <description>Centro del circuito de Jérez</description>
+      <Point>
+        <coordinates>-6.0328,36.7103,40</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Conexión al Inicio</name>
+      <styleUrl>#yellowLine</styleUrl>
+      <LineString>
+        <coordinates>
+          -6.0328,36.7103,40
+          -6.0339,36.7122,45
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Ruta del Circuito</name>
+      <styleUrl>#yellowLine</styleUrl>
+      <LineString>
+        <coordinates>
+          -6.0339,36.7122,45
+          -6.0314,36.7128,49
+          -6.0311,36.7125,49
+          -6.0314,36.7122,46
+          -6.0319,36.7100,41
+          -6.0278,36.7092,49
+          -6.0270,36.7081,53
+          -6.0331,36.7039,46
+          -6.0333,36.7044,46
+          -6.0322,36.7064,41
+          -6.0342,36.7083,37
+          -6.0353,36.7078,36
+          -6.0364,36.7061,40
+          -6.0369,36.7058,39
+          -6.0378,36.7064,40
+          -6.0364,36.7089,34
+          -6.0358,36.7092,35
+          -6.0339,36.7089,37
+          -6.0311,36.7072,40
+          -6.0328,36.7103,40
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE circuito SYSTEM "circuito.dtd">
+<circuito>
+    <nombre>Circuito de Jerez – Angel Nieto</nombre>
+    <longitud_pista unidad="metros">5793.0</longitud_pista>
+    <anchura unidad="metros">12</anchura>
+    <fecha>2025-04-27</fecha>
+    <hora>14:00:00</hora>
+    <vueltas>25</vueltas>
+    <localidad>Jerez de la Frontera</localidad>
+    <pais>España</pais>
+    <patrocinador>Estrella Galicia 0,0</patrocinador>
+    <bibliografia>
+        <referencia>https://circuitodejerez.com/circuito/</referencia>
+        <referencia>https://es.wikipedia.org/wiki/Circuito_de_Jerez</referencia>
+        <referencia>https://www.jerezmotogp.com/es</referencia>
+    </bibliografia>
+    <galeria_fotos>
+        <foto>
+            <descripcion>Panorama del circuito</descripcion>
+            <archivo>../multimedia/jerez-panoramica.jpg</archivo>
+        </foto>
+        <foto>
+            <descripcion>Recta principal y zona de meta</descripcion>
+            <archivo>../multimedia/jerez-recta.jpg</archivo>
+        </foto>
+        <foto>
+            <descripcion>Tribuna</descripcion>
+            <archivo>../multimedia/jerez-tribuna.jpg</archivo>
+        </foto>
+    </galeria_fotos>
+    
+    <galeria_videos>
+        <video>
+            <descripcion>Salida del circuito</descripcion>
+            <archivo>../multimedia/jerez-salida.mp4</archivo>
+        </video>
+    </galeria_videos>
+    <coordenadas_centro>
+        <latitud>36.7103</latitud>
+        <longitud>-6.0328</longitud>
+        <altitud>40</altitud>
+    </coordenadas_centro>
+    <tramos>
+        <tramo>
+            <distancia unidad="metros">237.37</distancia>
+            <coordenadas>
+                <latitud>36.7122</latitud>
+                <longitud>-6.0339</longitud>
+                <altitud>45</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">189.34</distancia>
+            <coordenadas>
+                <latitud>36.7128</latitud>
+                <longitud>-6.0314</longitud>
+                <altitud>49</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">39.43</distancia>
+            <coordenadas>
+                <latitud>36.7125</latitud>
+                <longitud>-6.0311</longitud>
+                <altitud>49</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">37.84</distancia>
+            <coordenadas>
+                <latitud>36.7122</latitud>
+                <longitud>-6.0314</longitud>
+                <altitud>46</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">160.75</distancia>
+            <coordenadas>
+                <latitud>36.7100</latitud>
+                <longitud>-6.0319</longitud>
+                <altitud>41</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">327.28</distancia>
+            <coordenadas>
+                <latitud>36.7092</latitud>
+                <longitud>-6.0278</longitud>
+                <altitud>49</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">124.35</distancia>
+            <coordenadas>
+                <latitud>36.7081</latitud>
+                <longitud>-6.0270</longitud>
+                <altitud>53</altitud>
+            </coordenadas>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">671.2</distancia>
+            <coordenadas>
+                <latitud>36.7039</latitud>
+                <longitud>-6.0331</longitud>
+                <altitud>46</altitud>
+            </coordenadas>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">50.92</distancia>
+            <coordenadas>
+                <latitud>36.7044</latitud>
+                <longitud>-6.0333</longitud>
+                <altitud>46</altitud>
+            </coordenadas>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">239.2</distancia>
+            <coordenadas>
+                <latitud>36.7064</latitud>
+                <longitud>-6.0322</longitud>
+                <altitud>41</altitud>
+            </coordenadas>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">277.83</distancia>
+            <coordenadas>
+                <latitud>36.7083</latitud>
+                <longitud>-6.0342</longitud>
+                <altitud>37</altitud>
+            </coordenadas>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">114.16</distancia>
+            <coordenadas>
+                <latitud>36.7078</latitud>
+                <longitud>-6.0353</longitud>
+                <altitud>36</altitud>
+            </coordenadas>
+            <sector>2</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">228.8</distancia>
+            <coordenadas>
+                <latitud>36.7061</latitud>
+                <longitud>-6.0364</longitud>
+                <altitud>40</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">53.52</distancia>
+            <coordenadas>
+                <latitud>36.7058</latitud>
+                <longitud>-6.0369</longitud>
+                <altitud>39</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">108.46</distancia>
+            <coordenadas>
+                <latitud>36.7064</latitud>
+                <longitud>-6.0378</longitud>
+                <altitud>40</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">290.39</distancia>
+            <coordenadas>
+                <latitud>36.7089</latitud>
+                <longitud>-6.0364</longitud>
+                <altitud>34</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">64.56</distancia>
+            <coordenadas>
+                <latitud>36.7092</latitud>
+                <longitud>-6.0358</longitud>
+                <altitud>35</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">170.35</distancia>
+            <coordenadas>
+                <latitud>36.7089</latitud>
+                <longitud>-6.0339</longitud>
+                <altitud>37</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">57.11</distancia>
+            <coordenadas>
+                <latitud>36.7072</latitud>
+                <longitud>-6.0311</longitud>
+                <altitud>40</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">383.79</distancia>
+            <coordenadas>
+                <latitud>36.7103</latitud>
+                <longitud>-6.0328</longitud>
+                <altitud>40</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+    </tramos>
+    <resultados_carrera>
+        <vencedor>
+            <nombre>Álex Márquez</nombre>
+            <tiempo>33:17.979</tiempo>
+        </vencedor>
+        <clasificacion_mundial>
+            <piloto>
+                <posicion>1</posicion>
+                <nombre>Álex Márquez</nombre>
+            </piloto>
+            <piloto>
+                <posicion>2</posicion>
+                <nombre>Fabio Quartararo</nombre>
+            </piloto>
+            <piloto>
+                <posicion>3</posicion>
+                <nombre>Francesco Bagnaia</nombre>
+            </piloto>
+        </clasificacion_mundial>
+    </resultados_carrera>
+</circuito>
