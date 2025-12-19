@@ -63,14 +63,12 @@ class Noticias {
                 $article.append($("<h3>").text(noticia.title));
             }
 
-            // 2. Entradilla (Snippet)
             if (noticia.snippet) {
                 $article.append($("<p>").text(noticia.snippet));
             }
 
-            // 3. Fuente
             if (noticia.source) {
-                $article.append($("<p>").html(`<strong>Fuente:</strong> ${noticia.source}`));
+                $article.append($("<p>").html(`Fuente: ${noticia.source}`));
             }
 
             if (noticia.url) {

@@ -1,12 +1,16 @@
 <?php
-session_start();
+// --- SOLUCIÓN AL PROBLEMA DE VISUALIZACIÓN ---
+ob_start();
+// Ajusta la ruta si tu archivo cronometro.php está en otra carpeta (ej: "../cronometro.php")
+require_once("../cronometro.php"); 
+ob_end_clean();
 
-// --- CLASE PARA GESTIÓN DE BASE DE DATOS ---
+// --- CLASE GESTOR DE BASE DE DATOS ---
 class GestorResultados {
     private $servername = "localhost";
     private $username = "DBUSER2025";
     private $password = "DBPSWD2025";
-    private $dbname = "UO295662_DB"; // ¡CAMBIA ESTO POR TU UO!
+    private $dbname = "UO295662_DB"; 
     private $conn;
 
     public function __construct() {
@@ -14,31 +18,29 @@ class GestorResultados {
         if ($this->conn->connect_error) {
             die("Error de conexión: " . $this->conn->connect_error);
         }
+        $this->conn->set_charset("utf8mb4");
     }
 
-    /**
-     * Guarda toda la sesión de prueba en la base de datos.
-     * Inserta en 'participantes', luego en 'pruebas' y finalmente en 'observaciones'.
-     */
     public function guardarTodo($datosUsuario, $datosPrueba, $comentariosObservador) {
-        // Usamos transacciones para asegurar que se guarda todo o nada
         $this->conn->begin_transaction();
 
         try {
-            // 1. Insertar Participante
-            $stmt = $this->conn->prepare("INSERT INTO participantes (codigo_usuario, profesion, edad, genero, pericia_informatica) VALUES (?, ?, ?, ?, ?)");
-            // Generamos un código único si no existe (ej. DNI o Random)
-            $codigo = $datosUsuario['dni']; 
-            $stmt->bind_param("ssisi", $codigo, $datosUsuario['profesion'], $datosUsuario['edad'], $datosUsuario['genero'], $datosUsuario['pericia']);
+            // 1. Insertar Participante (Con Edad, Género, Pericia)
+            $stmt = $this->conn->prepare("INSERT INTO participantes (codigo_usuario, edad, genero, pericia_informatica) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("sisi", 
+                $datosUsuario['codigo'],
+                $datosUsuario['edad'],
+                $datosUsuario['genero'],
+                $datosUsuario['pericia']
+            );
             $stmt->execute();
             $id_participante = $this->conn->insert_id;
             $stmt->close();
 
-            // 2. Insertar Prueba
-            // Concatenamos las respuestas del test en un solo campo de texto
+            // 2. Insertar Prueba (Con Dispositivo)
             $respuestas = "Respuestas: " . implode("; ", $datosPrueba['respuestas']);
             $comentarios_totales = $respuestas . " | Comentarios User: " . $datosPrueba['comentarios'];
-            $completado = 1; // True
+            $completado = 1; 
 
             $stmt2 = $this->conn->prepare("INSERT INTO pruebas (id_participante, dispositivo, tiempo_empleado, completado, comentarios_usuario, propuestas_mejora, valoracion_aplicacion) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt2->bind_param("isdissi", 
@@ -54,7 +56,7 @@ class GestorResultados {
             $id_prueba = $this->conn->insert_id;
             $stmt2->close();
 
-            // 3. Insertar Observaciones del Facilitador
+            // 3. Insertar Observaciones
             if (!empty($comentariosObservador)) {
                 $stmt3 = $this->conn->prepare("INSERT INTO observaciones (id_prueba, comentario_facilitador) VALUES (?, ?)");
                 $stmt3->bind_param("is", $id_prueba, $comentariosObservador);
@@ -72,42 +74,70 @@ class GestorResultados {
     }
 }
 
-// --- LÓGICA DE ESTADOS ---
+// --- LÓGICA DE CONTROL ---
 
-// Estado inicial por defecto
+if (!isset($_SESSION['cronometro_prueba'])) {
+    $_SESSION['cronometro_prueba'] = new Cronometro();
+}
+$cronometro = $_SESSION['cronometro_prueba'];
+
+// Reseteo de seguridad si entramos por URL directa en estado avanzado
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_SESSION['estado_test']) && ($_SESSION['estado_test'] === 'OBSERVADOR' || $_SESSION['estado_test'] === 'FINALIZADO')) {
+    session_destroy();
+    session_start();
+    $_SESSION['cronometro_prueba'] = new Cronometro();
+    $cronometro = $_SESSION['cronometro_prueba'];
+    $_SESSION['estado_test'] = 'INICIO';
+}
+
 if (!isset($_SESSION['estado_test'])) {
     $_SESSION['estado_test'] = 'INICIO';
 }
 
-// TRANSICIÓN 1: De INICIO a CUESTIONARIO (Arrancar Cronómetro)
-if (isset($_POST['comenzar'])) {
-    $_SESSION['estado_test'] = 'CUESTIONARIO';
-    $_SESSION['tiempo_inicio'] = microtime(true); // Tarea 2: Iniciar cronómetro
+// RESET MANUAL
+if (isset($_POST['resetear_prueba'])) {
+    session_destroy();
+    session_start();
+    $_SESSION['estado_test'] = 'INICIO';
+    header("Location: prueba.php");
+    exit();
 }
 
-// TRANSICIÓN 2: De CUESTIONARIO a OBSERVADOR (Parar Cronómetro y guardar datos temporales)
-if (isset($_POST['finalizar_cuestionario'])) {
-    $tiempo_fin = microtime(true);
-    $tiempo_total = $tiempo_fin - $_SESSION['tiempo_inicio']; // Tarea 2: Calcular tiempo
+// 1. INICIAR PRUEBA
+if (isset($_POST['comenzar'])) {
+    $_SESSION['estado_test'] = 'CUESTIONARIO';
+    $cronometro->reiniciar(); 
+    $cronometro->arrancar();
+}
 
-    // Recoger respuestas de las 10 preguntas
+// 2. FINALIZAR CUESTIONARIO (Recogida de datos extra)
+if (isset($_POST['finalizar_cuestionario'])) {
+    $cronometro->parar();
+    
+    // Obtener tiempo float con Reflection (para no tocar la clase original)
+    $reflector = new ReflectionClass($cronometro);
+    $propiedad = $reflector->getProperty('tiempo_acumulado');
+    $propiedad->setAccessible(true);
+    $tiempo_total = $propiedad->getValue($cronometro);
+    
     $respuestas = [];
     for ($i=1; $i<=10; $i++) {
         $respuestas[] = "P$i: " . ($_POST["p$i"] ?? "N/A");
     }
 
-    // Guardar datos en sesión
+    // Guardar datos del usuario en sesión
     $_SESSION['datos_usuario'] = [
-        'dni' => $_POST['dni'],
+        'codigo' => $_POST['codigo'],
         'edad' => $_POST['edad'],
         'genero' => $_POST['genero'],
-        'profesion' => $_POST['profesion'],
         'pericia' => $_POST['pericia']
     ];
 
+    // Guardar datos de la prueba en sesión
     $_SESSION['datos_prueba'] = [
         'dispositivo' => $_POST['dispositivo'],
         'tiempo' => $tiempo_total,
+        'tiempo_formato' => $cronometro->mostrar(),
         'respuestas' => $respuestas,
         'comentarios' => $_POST['comentarios'],
         'propuestas' => $_POST['propuestas'],
@@ -117,7 +147,7 @@ if (isset($_POST['finalizar_cuestionario'])) {
     $_SESSION['estado_test'] = 'OBSERVADOR';
 }
 
-// TRANSICIÓN 3: De OBSERVADOR a FINAL (Guardar en BD)
+// 3. GUARDAR EN BD
 $mensaje_resultado = "";
 if (isset($_POST['guardar_bd'])) {
     $gestor = new GestorResultados();
@@ -129,15 +159,13 @@ if (isset($_POST['guardar_bd'])) {
 
     if ($resultado === true) {
         $mensaje_resultado = "¡Datos guardados correctamente en la base de datos!";
-        // Reiniciar estado para la siguiente persona
-        session_destroy(); 
-        // Pequeño truco para mostrar el mensaje antes de perder la sesión visualmente
+        $cronometro->reiniciar();
         $_SESSION['estado_test'] = 'FINALIZADO'; 
+        $_SESSION['mensaje_final'] = $mensaje_resultado;
     } else {
         $mensaje_resultado = "Error: " . $resultado;
     }
 }
-
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
@@ -145,7 +173,6 @@ if (isset($_POST['guardar_bd'])) {
     <meta charset="UTF-8" />
     <title>Prueba de Usabilidad - MotoGP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Reutilizamos estilos, pero SIN menú de navegación (Ejercicio 3) -->
     <link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
     <link rel="icon" href="../multimedia/favicon.ico">
@@ -157,18 +184,16 @@ if (isset($_POST['guardar_bd'])) {
 
     <main>
         <!-- VISTA 1: PORTADA -->
-        <?php if (!isset($_SESSION['estado_test']) || $_SESSION['estado_test'] === 'INICIO'): ?>
+        <?php if ($_SESSION['estado_test'] === 'INICIO'): ?>
             <section>
                 <h2>Bienvenido a la Prueba</h2>
                 <p>El objetivo de esta prueba es evaluar la usabilidad de la aplicación MotoGP Desktop.</p>
-                <p>Por favor, cuando esté listo, pulse el botón para comenzar. Se le realizarán una serie de preguntas sobre la aplicación.</p>
-                
                 <form action="#" method="post">
-                    <input type="submit" name="comenzar" value="Iniciar Prueba" style="font-size: 1.5em; padding: 10px 20px;">
+                    <input type="submit" name="comenzar" value="Iniciar Prueba">
                 </form>
             </section>
 
-        <!-- VISTA 2: FORMULARIO USUARIO (Tarea 1) -->
+        <!-- VISTA 2: FORMULARIO USUARIO (Con nuevos campos) -->
         <?php elseif ($_SESSION['estado_test'] === 'CUESTIONARIO'): ?>
             <section>
                 <h2>Cuestionario de Evaluación</h2>
@@ -176,79 +201,83 @@ if (isset($_POST['guardar_bd'])) {
                     
                     <h3>1. Datos del Participante</h3>
                     <p>
-                        <label>DNI / Código: <input type="text" name="dni" required /></label>
-                        <label>Edad: <input type="number" name="edad" required /></label>
+                        <label>Código de Usuario: <input type="text" name="codigo" required /></label>
+                        <label>Edad: <input type="number" name="edad" required min="10" max="100" /></label>
                     </p>
                     <p>
-                        <label>Género: 
-                            <select name="genero">
+                        <label for="genero">Género:</label>
+                            <select name="genero" id="genero">
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
                                 <option value="Otro">Otro</option>
                             </select>
                         </label>
-                        <label>Profesión: <input type="text" name="profesion" /></label>
+                        <label>Pericia Informática (0-10): <input type="number" name="pericia" min="0" max="10" required /></label>
                     </p>
                     <p>
-                        <label>Pericia Informática (0-10): <input type="number" name="pericia" min="0" max="10" required /></label>
-                        <label>Dispositivo usado: 
-                            <select name="dispositivo">
-                                <option value="Ordenador">Ordenador</option>
-                                <option value="Tableta">Tableta</option>
-                                <option value="Móvil">Móvil</option>
-                            </select>
-                        </label>
+                        <label for="dispositivo">Dispositivo utilizado:</label>
+                        <select name="dispositivo" id="dispositivo">
+                            <option value="Ordenador">Ordenador</option>
+                            <option value="Tableta">Tableta</option>
+                            <option value="Móvil">Móvil</option>
+                        </select>
                     </p>
 
                     <h3>2. Tareas y Preguntas</h3>
-                    <p>Por favor, realice las siguientes comprobaciones en la web y conteste:</p>
+                    <p>Por favor, realice las comprobaciones y conteste:</p>
                     
-                    <label>1. ¿Ha encontrado fácilmente el calendario de carreras? <input type="text" name="p1" required></label><br>
-                    <label>2. ¿Cómo valora la velocidad de carga de las imágenes? <input type="text" name="p2" required></label><br>
-                    <label>3. ¿Es legible el tamaño de letra en la sección de pilotos? <input type="text" name="p3" required></label><br>
-                    <label>4. ¿Funcionó correctamente el mapa dinámico en Circuito? <input type="text" name="p4" required></label><br>
-                    <label>5. ¿Ha podido jugar al juego de memoria sin errores? <input type="text" name="p5" required></label><br>
-                    <label>6. ¿La información meteorológica se entiende bien? <input type="text" name="p6" required></label><br>
-                    <label>7. ¿Qué opina de la estructura del menú principal? <input type="text" name="p7" required></label><br>
-                    <label>8. ¿Ha encontrado enlaces rotos o imágenes fallidas? <input type="text" name="p8" required></label><br>
-                    <label>9. ¿Considera útil la sección de noticias? <input type="text" name="p9" required></label><br>
-                    <label>10. Del 0 al 10, ¿cuánto le gusta el diseño visual? <input type="number" name="p10" min="0" max="10" required></label><br>
+                    <label>1. ¿Es útil la ayuda? <input type="text" name="p1" required></label><br>
+                    <label>2. ¿Cómo valora la carga de imágenes? <input type="text" name="p2" required></label><br>
+                    <label>3. ¿Es legible el tamaño de letra? <input type="text" name="p3" required></label><br>
+                    <label>4. ¿Funcionó el mapa dinámico? <input type="text" name="p4" required></label><br>
+                    <label>5. ¿Jugó al juego de memoria sin errores? <input type="text" name="p5" required></label><br>
+                    <label>6. ¿Se entiende la meteorología? <input type="text" name="p6" required></label><br>
+                    <label>7. ¿Qué opina del menú principal? <input type="text" name="p7" required></label><br>
+                    <label>8. ¿Encontró enlaces rotos? <input type="text" name="p8" required></label><br>
+                    <label>9. ¿Es útil la sección de noticias? <input type="text" name="p9" required></label><br>
+                    <label>10. Diseño visual (opinión): <input type="text" name="p10" required></label><br>
 
                     <h3>3. Valoración Final</h3>
                     <label>Puntuación Global (0-10): <input type="number" name="valoracion" min="0" max="10" required></label><br>
                     <label>Comentarios:<br><textarea name="comentarios"></textarea></label><br>
                     <label>Propuestas de mejora:<br><textarea name="propuestas"></textarea></label>
 
-                    <p style="margin-top: 20px;">
+                    <p>
                         <input type="submit" name="finalizar_cuestionario" value="Terminar Prueba">
                     </p>
                 </form>
             </section>
 
-        <!-- VISTA 3: ZONA DEL FACILITADOR (Tarea 3) -->
         <?php elseif ($_SESSION['estado_test'] === 'OBSERVADOR'): ?>
-            <section style="background-color: #f9f9f9; border: 2px solid #ccc; padding: 20px;">
-                <h2>Zona del Facilitador</h2>
-                <p>La prueba ha finalizado para el usuario.</p>
-                
-                <!-- Mostramos el tiempo solo ahora (Tarea 2) -->
-                <p><strong>Tiempo empleado:</strong> <?php echo round($_SESSION['datos_prueba']['tiempo'], 2); ?> segundos.</p>
+            <section>
+                <h2>Zona del Observador</h2>
+                <p>La prueba ha finalizado.</p>
+                <p>Tiempo empleado: <?php echo $_SESSION['datos_prueba']['tiempo_formato']; ?></p>
                 
                 <form action="#" method="post">
-                    <label>Observaciones del facilitador sobre la prueba:<br>
-                    <textarea name="notas_observador" style="width: 100%; height: 100px;"></textarea>
-                    </label>
+                    <label for="notas_observador">Observaciones del facilitador:</label>
+                    <br>
+                    
+                    <textarea id="notas_observador" name="notas_observador"></textarea>
+                    
                     <p>
                         <input type="submit" name="guardar_bd" value="Guardar Informe en Base de Datos">
                     </p>
+                </form>
+                
+                <form action="#" method="post">
+                    <input type="submit" name="resetear_prueba" value="Cancelar y Reiniciar">
                 </form>
             </section>
         
         <?php else: ?>
             <section>
                 <h2>Resultado</h2>
-                <p><?php echo $mensaje_resultado; ?></p>
-                <p><a href="../index.html">Volver al Inicio</a> | <a href="prueba.php">Nueva Prueba</a></p>
+                <p><?php echo $_SESSION['mensaje_final'] ?? $mensaje_resultado; ?></p>
+                <p><a href="../index.html">Volver al Inicio</a></p>
+                <form action="#" method="post">
+                    <input type="submit" name="resetear_prueba" value="Nueva Prueba">
+                </form>
             </section>
         <?php endif; ?>
     </main>

@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <section>
             <h3>Tiempo Transcurrido</h3>
-            <p style="font-size: 2em; font-weight: bold;">
+            <p>
                 <?php echo $cronometro->mostrar(); ?>
             </p>
         </section>

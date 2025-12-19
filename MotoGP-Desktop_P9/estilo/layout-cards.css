@@ -1,7 +1,7 @@
 main {/*Especificidad 0,0,1 */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.5em; 
+    gap: 1.5em;
     justify-items: center;
     max-width: 90%; 
     margin: 2em auto; 
@@ -20,7 +20,9 @@ main > p{/*Especificidad 0,0,2 */
     
     main {/*Especificidad 0,0,1 */
         grid-template-columns: repeat(2, 1fr);
+        /*Redefinición de grid-template-columns:Reduce el número de columnas en pantallas pequeñas*/
         gap: 0.25em;
+        /*Redifinición de gap para pantallas pequeñas */
     }
 
 }

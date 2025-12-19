@@ -46,13 +46,22 @@ xsi:schemaLocation="http://www.uniovi.es circuito.xsd"
     </coordenadas_centro>
     <tramos>
         <tramo>
-            <distancia unidad="metros">237.37</distancia>
+            <distancia unidad="metros">249.79</distancia>
             <coordenadas>
-                <latitud>36.7122</latitud>
-                <longitud>-6.0339</longitud>
-                <altitud>45</altitud>
+                <latitud>36.7123415</latitud>
+                <longitud>-6.0338953</longitud>
+                <altitud>44</altitud>
             </coordenadas>
             <sector>1</sector>
+        </tramo>
+        <tramo>
+        <distancia unidad="metros">43.13</distancia>
+        <coordenadas>
+            <latitud>36.7126838</latitud>
+            <longitud>-6.0337101</longitud>
+            <altitud>46</altitud>
+        </coordenadas>
+        <sector>1</sector>
         </tramo>
         <tramo>
             <distancia unidad="metros">189.34</distancia>
@@ -82,6 +91,15 @@ xsi:schemaLocation="http://www.uniovi.es circuito.xsd"
             <sector>1</sector>
         </tramo>
         <tramo>
+            <distancia unidad="metros">77.87</distancia>
+            <coordenadas>
+                <latitud>36.7117473</latitud>
+                <longitud>-6.0320330</longitud>
+                <altitud>44</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
             <distancia unidad="metros">160.75</distancia>
             <coordenadas>
                 <latitud>36.7100</latitud>
@@ -91,7 +109,16 @@ xsi:schemaLocation="http://www.uniovi.es circuito.xsd"
             <sector>1</sector>
         </tramo>
         <tramo>
-            <distancia unidad="metros">327.28</distancia>
+            <distancia unidad="metros">89.69</distancia>
+            <coordenadas>
+                <latitud>36.7094413</latitud>
+                <longitud>-6.0311654</longitud>
+                <altitud>41</altitud>
+            </coordenadas>
+            <sector>1</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">298.28</distancia>
             <coordenadas>
                 <latitud>36.7092</latitud>
                 <longitud>-6.0278</longitud>
@@ -102,8 +129,8 @@ xsi:schemaLocation="http://www.uniovi.es circuito.xsd"
         <tramo>
             <distancia unidad="metros">124.35</distancia>
             <coordenadas>
-                <latitud>36.7081</latitud>
-                <longitud>-6.0270</longitud>
+                <latitud>36.7081177</latitud>
+                <longitud>-6.0272263</longitud>
                 <altitud>53</altitud>
             </coordenadas>
             <sector>2</sector>
@@ -204,6 +231,15 @@ xsi:schemaLocation="http://www.uniovi.es circuito.xsd"
                 <latitud>36.7089</latitud>
                 <longitud>-6.0339</longitud>
                 <altitud>37</altitud>
+            </coordenadas>
+            <sector>3</sector>
+        </tramo>
+        <tramo>
+            <distancia unidad="metros">289.69</distancia>
+            <coordenadas>
+                <latitud>36.7068994</latitud>
+                <longitud>-6.0317237</longitud>
+                <altitud>40</altitud>
             </coordenadas>
             <sector>3</sector>
         </tramo>

@@ -51,3 +51,25 @@ main > div {/*Especificidad 0,0,2 */
     display: none;
     /* El color de texto (#0b1c48) se hereda del selector 'body'. */
 }
+main label {
+    display: block;       
+    margin-top: 20px;     
+    margin-bottom: 8px;   
+    font-weight: bold;    
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea { /* Especificidad 0,1,1 (inputs) y 0,0,1 (select/textarea) */
+    width: 100%;
+    padding: 0.8em;        
+    margin-bottom: 1.2em;     
+    border: 0.1rem solid #ccc; 
+    border-radius: 0.3em;      
+    background-color: #fff;
+    font-family: inherit;
+    box-sizing: border-box;
+    font-size: 1rem;           
+    /* El color de texto (#0b1c48) se hereda del selector 'body'. */
+}

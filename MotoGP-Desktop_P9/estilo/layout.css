@@ -16,9 +16,6 @@ header nav {/*Especificidad 0,0,2 */
 
 @media (min-width: 320px) and (max-width: 799px) {
 
-    header { /*Especificidad 0,0,1 */
-        flex-direction: column;
-    }
 
     header nav { /*Especificidad 0,0,2 */ 
         flex-direction: column;

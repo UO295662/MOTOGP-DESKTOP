@@ -81,7 +81,7 @@ class Carrusel {
 
         const fotoNueva = this.#fotos[this.#actual];
 
-        const $img = $(this.#selectorContainer).find('article img');
+        const $img = $(this.#selectorContainer).find('img');
 
         $img.attr({
             "src": fotoNueva.url,

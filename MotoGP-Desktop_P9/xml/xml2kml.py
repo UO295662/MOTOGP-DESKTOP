@@ -3,8 +3,7 @@ import xml.etree.ElementTree as ET
 def convert_xml_to_kml(xml_file, kml_file):
     tree = ET.parse(xml_file)
     root = tree.getroot()
-   ns = {'c': 'http://www.uniovi.es'}
-
+    ns = {'c': 'http://www.uniovi.es'}
     with open(kml_file, 'w', encoding='utf-8') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         f.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')

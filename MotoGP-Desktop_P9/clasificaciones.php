@@ -15,7 +15,7 @@ class Clasificacion {
                 $this->xml->registerXPathNamespace('ns', 'http://www.uniovi.es');
             }
         } else {
-            echo "<p style='color: red;'>Error: No se encuentra el archivo XML en: " . $this->documento . "</p>";
+            echo "<p>Error: No se encuentra el archivo XML en: " . $this->documento . "</p>";
         }
     }
 

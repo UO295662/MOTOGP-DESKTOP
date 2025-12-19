@@ -28,7 +28,7 @@ class Configuracion {
         
         $sqlFile = 'BD.sql';
         if (!file_exists($sqlFile)) {
-            return "<p style='color:red'>Error: No se encuentra el archivo $sqlFile en el directorio actual.</p>";
+            return "<p>Error: No se encuentra el archivo $sqlFile en el directorio actual.</p>";
         }
         
         $sql = file_get_contents($sqlFile);
@@ -41,11 +41,11 @@ class Configuracion {
             } while ($conn->more_results() && $conn->next_result());
             
             $conn->close();
-            return "<p style='color:green'>Base de datos y tablas creadas/reiniciadas correctamente.</p>";
+            return "<p>Base de datos y tablas creadas/reiniciadas correctamente.</p>";
         } else {
             $error = $conn->error;
             $conn->close();
-            return "<p style='color:red'>Error creando la base de datos: " . $error . "</p>";
+            return "<p>Error creando la base de datos: " . $error . "</p>";
         }
     }
 
@@ -56,11 +56,11 @@ class Configuracion {
         
         if ($conn->query($sql) === TRUE) {
             $conn->close();
-            return "<p style='color:green'>Base de datos eliminada correctamente.</p>";
+            return "<p>Base de datos eliminada correctamente.</p>";
         } else {
             $error = $conn->error;
             $conn->close();
-            return "<p style='color:red'>Error eliminando la base de datos: " . $error . "</p>";
+            return "<p >Error eliminando la base de datos: " . $error . "</p>";
         }
     }
     public function exportarCSV() {
