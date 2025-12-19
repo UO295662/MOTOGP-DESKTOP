@@ -1,4 +1,6 @@
-<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+<!DOCTYPE HTML>
+<html lang="es">
+    <head><style>body {transition: opacity ease-in 0.2s; } 
 body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
 </style>
     <meta charset="UTF-8">
@@ -14,7 +16,6 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     </header>
 
     <main>
-        <!-- VISTA 1: PORTADA -->
                     <section>
                 <h2>Cuestionario de Evaluación</h2>
                 <form action="#" method="post">
@@ -25,22 +26,23 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
                         <label>Edad: <input type="number" name="edad" required="" min="10" max="100"></label>
                     </p>
                     <p>
-                        <label for="genero" id="genero">Género:</label>
-                            <select name="genero">
+                        <label for="genero">Género:
+                            <select name="genero" id="genero">
                                 <option value="Hombre">Hombre</option>
                                 <option value="Mujer">Mujer</option>
                                 <option value="Otro">Otro</option>
                             </select>
-                        
+                        </label>
                         <label>Pericia Informática (0-10): <input type="number" name="pericia" min="0" max="10" required=""></label>
                     </p>
                     <p>
-                        <label for="dispositivo" id="dispositivo">Dispositivo utilizado:</label>
-                        <select name="dispositivo">
-                            <option value="Ordenador">Ordenador</option>
-                            <option value="Tableta">Tableta</option>
-                            <option value="Móvil">Móvil</option>
-                        </select>
+                        <label for="dispositivo">Dispositivo utilizado:
+                            <select name="dispositivo" id="dispositivo">
+                                <option value="Ordenador">Ordenador</option>
+                                <option value="Tableta">Tableta</option>
+                                <option value="Móvil">Móvil</option>
+                            </select>
+                        </label>
                     </p>
 
                     <h3>2. Tareas y Preguntas</h3>
