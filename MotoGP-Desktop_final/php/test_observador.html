@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <meta charset="UTF-8">
+    <title>Prueba de Usabilidad - MotoGP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css">
+    <link rel="icon" href="../multimedia/favicon.ico">
+</head>
+<body>
+    <header>
+        <h1>Prueba de Usabilidad</h1>
+    </header>
+
+    <main>
+                    <section>
+                <h2>Zona del Observador</h2>
+                <p>La prueba ha finalizado.</p>
+                <p>Tiempo empleado: 00:39.9</p>
+                
+                <form action="#" method="post">
+                    <label for="notas_observador">Observaciones del facilitador:</label>
+                    <br>
+                    <textarea name="notas_observador" id="notas_observador"></textarea>
+                    <p>
+                        <input type="submit" name="guardar_bd" value="Guardar Informe en Base de Datos">
+                    </p>
+                </form>
+                
+                <form action="#" method="post">
+                    <input type="submit" name="resetear_prueba" value="Cancelar y Reiniciar">
+                </form>
+            </section>
+        
+            </main>
+
+</body></html>

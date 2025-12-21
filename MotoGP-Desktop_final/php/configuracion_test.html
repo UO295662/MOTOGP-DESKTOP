@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <meta charset="UTF-8">
+    <title>MOTOGP-Configuración</title>
+    <meta name="author" content="Gael Horta Calzada">
+    <meta name="description" content="Configuración de BD de MotoGP">
+    <meta name="keywords" content="MotoGP,configuración, BD, PHP">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css">
+    <link rel="icon" href="../multimedia/favicon.ico">
+</head>
+<body>
+    <header>
+    <h1><a href="../index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="../index.html" title="Inicio MotoGPDekstop">Inicio</a>
+        <a href="../piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="../circuito.html" title="Circuito MotoGPDekstop">Circuito</a>
+        <a href="../meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+        <a href="../clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="../juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="../ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+    <p>Estás en: <a href="../index.html">Inicio</a> &gt;&gt; <a href="../juegos.html">Juegos</a>&gt;&gt;Configuración Test</p>
+    
+    <main>
+        <section>
+            <h2>Gestión de Datos</h2>
+            <p>Utilice las siguientes opciones para administrar la base de datos de las pruebas de usabilidad.</p>
+            
+            <p>Base de datos y tablas creadas/reiniciadas correctamente.</p>
+            <form action="#" method="post">
+                <p>
+                    <input type="submit" name="crear" value="Crear / Reiniciar Base de Datos">
+                    <label>Crea la base de datos inicial o borra todos los datos existentes para empezar de cero.</label>
+                </p>
+                <p>
+                    <input type="submit" name="borrar" value="Borrar Base de Datos">
+                    <label>Elimina completamente la base de datos y todos sus registros.</label>
+                </p>
+                <p>
+                    <input type="submit" name="exportar" value="Exportar Datos a CSV">
+                    <label>Descarga un archivo .csv con toda la información almacenada actualmente.</label>
+                </p>
+            </form>
+        </section>
+        
+        <section>
+            <h3>Volver</h3>
+            <p><a href="../index.html">Regresar a la página de inicio</a></p>
+        </section>
+    </main>
+
+</body></html>
