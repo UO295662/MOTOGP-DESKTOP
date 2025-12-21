@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>MOTOGP-Meteorologia</title>
+    <meta name="author" content="Gael Horta Calzada">
+    <meta name="description" content="Información sobre meteorologia de MotoGP">
+    <meta name="keywords" content="MotoGP,meteorologia,pronostico tiempo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="icon" href="multimedia/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/ciudad.js"></script>
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+    <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="index.html" title="Inicio MotoGPDekstop">Inicio</a>
+        <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="circuito.html" title="Circuito MotoGPDekstop">Circuito</a>
+        <a href="meteorologia.html" title="Meteorología MotoGPDekstop" class="active">Meteorología</a>
+        <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+    <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; Meteorología</p>
+    <main>
+        <h2>Meteorologia de MotoGP-Desktop</h2>
+        <section><h3>Información de la Ciudad</h3><h2>Jerez de la Frontera</h2><p>País: España</p><ul><li>Gentilicio: jerezano</li><li>Población: 213.668</li></ul><p>Coordenadas: (Lat: 36.683, Lon: -6.138)</p></section>
+        <section><h3>Meteorología del Día de Carrera</h3><ul><li>Salida del sol: 08:33</li><li>Puesta del sol: 18:12</li></ul><h4>Pronóstico para la Carrera (14:00)</h4><ul><li><h5>14:00</h5><ul><li>Temp.: 12 °C</li><li>Sens. T.: 10.5 °C</li><li>Lluvia: 0.5 mm</li><li>Humedad: 86 %</li><li>Viento: 10 km/h (Dir: 296°)</li></ul></li></ul></section>
+        <section><h3>Media Meteorológica (3 Días de Entrenamientos)</h3><ul><li><h4>Día 1</h4><ul><li>Temperatura Media: 11.88 °C</li><li>Lluvia (media total): 0.21 mm</li><li>Humedad Media: 86.88 %</li><li>Viento Medio: 9.77 km/h</li></ul></li><li><h4>Día 2</h4><ul><li>Temperatura Media: 7.63 °C</li><li>Lluvia (media total): 0 mm</li><li>Humedad Media: 82.04 %</li><li>Viento Medio: 4.09 km/h</li></ul></li><li><h4>Día 3</h4><ul><li>Temperatura Media: 9.55 °C</li><li>Lluvia (media total): 0.08 mm</li><li>Humedad Media: 92.75 %</li><li>Viento Medio: 2.8 km/h</li></ul></li></ul></section>
+        <script>
+            $(document).ready(function() {
+                const ciudadJerez = new Ciudad(
+                    "Jerez de la Frontera",
+                    "España",
+                    "jerezano"
+                );
+                const poblacionJerez = 213668;
+                const coordenadasJerez = {
+                    lat: 36.683,
+                    lon: -6.138
+                };
+                ciudadJerez.rellenarAtrib(poblacionJerez, coordenadasJerez);
+                
+                const $infoSection = $("main > section:first-of-type");
+                $infoSection.empty();
+                $infoSection.append($("<h3>").text("Información de la Ciudad"));
+                $infoSection.append($("<h2>").text(ciudadJerez.getNombre()));
+                $infoSection.append($("<p>").text("País: " + ciudadJerez.getPais()));
+                $infoSection.append(ciudadJerez.getInfoSecundariaHTML()); 
+                $infoSection.append(ciudadJerez.escribirCoordenadas()); 
+
+                const $meteoSection = $("main > section:nth-of-type(2)");
+
+                ciudadJerez.getMeteorologiaCarrera()
+                    .done(function(data) {
+                        const $elementosCarrera = ciudadJerez.procesarJSONCarrera(data);
+                        
+                        $meteoSection.empty();
+                        $meteoSection.append($("<h3>").text("Meteorología del Día de Carrera"));
+                        $meteoSection.append($elementosCarrera);
+                    });
+                
+                const $entrenosSection = $("main > section:nth-of-type(3)");
+
+                ciudadJerez.getMeteorologiaEntrenos()
+                    .done(function(data) {
+                        const $listaEntrenos = ciudadJerez.procesarJSONEntrenos(data);
+                        
+                        $entrenosSection.empty();
+                        $entrenosSection.append($("<h3>").text("Media Meteorológica (3 Días de Entrenamientos)"));
+                        $entrenosSection.append($listaEntrenos);
+                    });
+            });
+        </script>
+    </main>
+
+</body></html>

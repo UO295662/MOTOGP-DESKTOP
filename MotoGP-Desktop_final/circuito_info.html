@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>MOTOGP-Circuito</title>
+    <meta name="author" content="Gael Horta Calzada">
+    <meta name="description" content="Información sobre el circuito de MotoGP">
+    <meta name="keywords" content="MotoGP, circuito, jerez">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="icon" href="multimedia/favicon.ico"> 
+    <script src="js/circuito.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+    <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="index.html" title="Inicio MotoGPDekstop">Inicio</a>
+        <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="circuito.html" title="Circuito MotoGPDekstop" class="active">Circuito</a>
+        <a href="meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+        <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+    
+    <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; <strong>Circuito</strong></p>
+    
+    <main>
+        <h2>Circuito de MotoGP-Desktop</h2>
+
+        <label for="archivoCircuito">Selecciona archivo html:</label>
+        <input type="file" id="archivoCircuito" accept=".html,.htm,.xml" title="Selector de archivo del circuito">
+
+        <label for="archivoAltimetria">Selecciona archivo svg:</label>
+        <input type="file" id="archivoAltimetria" accept=".svg" title="Selector de archivo de altimetría">
+        
+        <label for="archivoMapa">Selecciona archivo kml:</label>
+        <input type="file" id="archivoMapa" accept=".kml" title="Selector de archivo KML del mapa">
+
+
+        <section><h3>Circuito de Jerez – Angel Nieto</h3><section>
+            <h4>Datos Generales</h4>
+            <ul>
+                <li><strong>Longitud:</strong> 5793.0 metros</li>
+                <li><strong>Anchura:</strong> 12 metros</li>
+                <li><strong>Fecha:</strong> 2025-04-27</li>
+                <li><strong>Hora:</strong> 14:00:00</li>
+                <li><strong>Vueltas:</strong> 25</li>
+                <li><strong>Localidad:</strong> Jerez de la Frontera</li>
+                <li><strong>País:</strong> España</li>
+                <li><strong>Patrocinador:</strong> Estrella Galicia 0,0</li>
+            </ul>
+        </section><section>
+            <h4>Coordenadas del Centro</h4>
+            <ul>
+                <li><strong>Latitud:</strong> 36.7103</li>
+                <li><strong>Longitud:</strong> -6.0328</li>
+                <li><strong>Altitud:</strong> 40</li>
+            </ul>
+        </section><section>
+            <h4>Bibliografía</h4>
+            <ul>
+                <li><a href="https://circuitodejerez.com/circuito/">https://circuitodejerez.com/circuito/</a></li>
+                <li><a href="https://es.wikipedia.org/wiki/Circuito_de_Jerez">https://es.wikipedia.org/wiki/Circuito_de_Jerez</a></li>
+                <li><a href="https://www.jerezmotogp.com/es">https://www.jerezmotogp.com/es</a></li>
+            </ul>
+        </section><section>
+            <h4>Galería de Fotos</h4>
+            <figure>
+                <img src="multimedia/jerez-panoramica.jpg" alt="Panorama del circuito">
+                <figcaption>Panorama del circuito</figcaption>
+            </figure>
+            <figure>
+                <img src="multimedia/jerez-recta.jpg" alt="Recta principal y zona de meta">
+                <figcaption>Recta principal y zona de meta</figcaption>
+            </figure>
+            <figure>
+                <img src="multimedia/jerez-tribuna.jpg" alt="Tribuna">
+                <figcaption>Tribuna</figcaption>
+            </figure>
+        </section><section>
+            <h4>Galería de Videos</h4>
+            <figure>
+                <video controls="" src="multimedia/jerez-salida.mp4">
+                    Tu navegador no soporta el video. Descripción: Salida del circuito
+                </video>
+                <figcaption>Salida del circuito</figcaption>
+            </figure>
+        </section><section>
+            <h4>Resultados de la Carrera</h4>
+            <h5>Vencedor</h5>
+            <p>Álex Márquez (Tiempo: PT33M17.979S)</p>
+            <h4>Clasificación Mundial</h4>
+            <ul>
+                <li>1. Álex Márquez</li>
+                <li>2. Fabio Quartararo</li>
+                <li>3. Francesco Bagnaia</li>
+            </ul>
+        </section></section>
+        
+        <section>
+            <h3>Altimetría</h3>
+            <p>Esperando archivo ...</p>
+        </section>
+
+        <h3>Mapa del Circuito</h3>
+            <p>Esperando archivo ...</p>
+        <div></div>
+    </main>
+    
+    <script>
+        const circuito = new Circuito();
+        const cargadorSVG = new CargadorSVG();
+        const cargadorKML = new CargadorKML();
+    </script>
+
+</body></html>

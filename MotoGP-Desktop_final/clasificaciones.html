@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>MOTOGP - Clasificaciones</title>
+    <meta name="author" content="Gael Horta Calzada">
+    <meta name="description" content="Clasificaciones de MotoGP leídas desde XML en el servidor">
+    <meta name="keywords" content="MotoGP, clasificaciones, xml, php">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="icon" href="multimedia/favicon.ico">
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+        <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+        <nav>
+            <a href="index.html" title="Inicio MotoGPDekstop">Inicio</a>
+            <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+            <a href="circuito.html" title="Circuito MotoGPDekstop">Circuito</a>
+            <a href="meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+            <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop" class="active">Clasificaciones</a>
+            <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+            <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+        </nav>
+    </header>
+    
+    <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; Clasificaciones</p>
+    
+    <main>
+        <h2>Resultados y Clasificaciones</h2>
+        
+        <p>A continuación se muestran los resultados procesados automáticamente desde el archivo XML del servidor:</p>
+
+        <section aria-label="Ganador de la carrera"><h3>Ganador de la Carrera</h3><p>Piloto: Álex Márquez</p><p>Tiempo: PT33M17.979S</p></section><section aria-label="Clasificación del Mundial"><h3>Clasificación del Mundial</h3><ol><li>Álex Márquez</li><li>Fabio Quartararo</li><li>Francesco Bagnaia</li></ol></section>        
+    </main>
+
+</body></html>

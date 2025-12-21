@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    <title>MOTOGP-Circuito</title>
+    <meta name="author" content="Gael Horta Calzada">
+    <meta name="description" content="Información sobre el circuito de MotoGP">
+    <meta name="keywords" content="MotoGP, circuito, jerez">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="icon" href="multimedia/favicon.ico"> 
+    <script src="js/circuito.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+    <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="index.html" title="Inicio MotoGPDekstop">Inicio</a>
+        <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="circuito.html" title="Circuito MotoGPDekstop" class="active">Circuito</a>
+        <a href="meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+        <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+
+    <p>Estás en: <a href="index.html">Inicio</a> &gt;&gt; Circuito</p>
+
+    <main>
+        <h2>Circuito de MotoGP-Desktop</h2>
+
+        <label for="archivoCircuito">Selecciona archivo html:</label>
+        <input type="file" id="archivoCircuito" accept=".html,.htm,.xml" title="Selector de archivo del circuito">
+
+        <label for="archivoAltimetria">Selecciona archivo svg:</label>
+        <input type="file" id="archivoAltimetria" accept=".svg" title="Selector de archivo de altimetría">
+        
+        <label for="archivoMapa">Selecciona archivo kml:</label>
+        <input type="file" id="archivoMapa" accept=".kml" title="Selector de archivo KML del mapa">
+
+
+        <section><h3>Circuito de Jerez – Angel Nieto</h3><section>
+            <h4>Datos Generales</h4>
+            <ul>
+                <li> Longitud: 5793.0 metros</li>
+                <li> Anchura: 12 metros</li>
+                <li> Fecha: 2025-04-27</li>
+                <li> Hora: 14:00:00</li>
+                <li> Vueltas: 25</li>
+                <li> Localidad: Jerez de la Frontera</li>
+                <li> País: España</li>
+                <li> Patrocinador: Estrella Galicia 0,0</li>
+            </ul>
+        </section><section>
+            <h4>Coordenadas del Centro</h4>
+            <ul>
+                <li> Latitud: 36.7103</li>
+                <li> Longitud: -6.0328</li>
+                <li> Altitud: 40</li>
+            </ul>
+        </section><section>
+            <h4>Bibliografía</h4>
+            <ul>
+                <li><a href="https://circuitodejerez.com/circuito/">https://circuitodejerez.com/circuito/</a></li>
+                <li><a href="https://es.wikipedia.org/wiki/Circuito_de_Jerez">https://es.wikipedia.org/wiki/Circuito_de_Jerez</a></li>
+                <li><a href="https://www.jerezmotogp.com/es">https://www.jerezmotogp.com/es</a></li>
+            </ul>
+        </section><section>
+            <h4>Galería de Fotos</h4>
+            <figure>
+                <img src="multimedia/jerez-panoramica.jpg" alt="Panorama del circuito">
+                <figcaption>Panorama del circuito</figcaption>
+            </figure>
+            <figure>
+                <img src="multimedia/jerez-recta.jpg" alt="Recta principal y zona de meta">
+                <figcaption>Recta principal y zona de meta</figcaption>
+            </figure>
+            <figure>
+                <img src="multimedia/jerez-tribuna.jpg" alt="Tribuna">
+                <figcaption>Tribuna</figcaption>
+            </figure>
+        </section><section>
+            <h4>Galería de Videos</h4>
+            <figure>
+                <video controls="" src="multimedia/jerez-salida.mp4">
+                    Tu navegador no soporta el video. Descripción: Salida del circuito
+                </video>
+                <figcaption>Salida del circuito</figcaption>
+            </figure>
+        </section><section>
+            <h4>Resultados de la Carrera</h4>
+            <h5>Vencedor</h5>
+            <p>Álex Márquez (Tiempo: PT33M17.979S)</p>
+            <h4>Clasificación Mundial</h4>
+            <ul>
+                <li>1. Álex Márquez</li>
+                <li>2. Fabio Quartararo</li>
+                <li>3. Francesco Bagnaia</li>
+            </ul>
+        </section></section>
+        
+        <section><h3>Altimetría del Circuito</h3><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="0 0 1000 500">
+    <title>Perfil de Altimetría del Circuito</title>
+    <style>
+        .poly { fill: #add8e6; stroke: #00008b; stroke-width: 2; }
+        .label { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+        .label-y { text-anchor: end; }
+    </style>
+
+    <!-- Polígono del perfil de altimetría -->
+    <polygon class="poly" points="60,440 60.00,220.00 114.59,220.00 158.13,140.00 167.20,140.00 175.90,200.00 212.87,300.00 288.13,140.00 316.73,60.00 471.08,200.00 482.79,200.00 537.80,300.00 601.69,380.00 627.94,400.00 680.56,320.00 692.86,340.00 717.81,320.00 784.59,440.00 799.43,420.00 838.61,380.00 851.74,320.00 940.00,320.00 940,440"></polygon>
+
+    <!-- Etiquetas de los ejes -->
+    <text class="label" x="500.0" y="490">Distancia (metros)</text>
+    <text class="label" transform="translate(15, 250.0) rotate(-90)">Altitud (metros)</text>
+</svg></section>
+
+        <h3>Mapa del Circuito</h3>
+            <p>Esperando archivo ...</p>
+        <div class="mapboxgl-map" style="display: block;"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate"><canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" role="region" width="638" height="627" style="width: 510.4px; height: 501.6px;"></canvas><div aria-label="Map marker" class="mapboxgl-marker mapboxgl-marker-anchor-center" role="button" tabindex="0" aria-expanded="false" style="transform: translate(255px, 251px) translate(-50%, -50%) translate(0px, -14px);"><svg display="block" height="41px" width="27px" viewBox="0 0 27 41"><defs><radialGradient id="shadowGradient"><stop offset="10%" stop-opacity="0.4"></stop><stop offset="100%" stop-opacity="0.05"></stop></radialGradient></defs><ellipse cx="13.5" cy="34.8" rx="10.5" ry="5.25" fill="url(#shadowGradient)"></ellipse><path fill="red" d="M27,13.5C27,19.07 20.25,27 14.75,34.5C14.02,35.5 12.98,35.5 12.25,34.5C6.75,27 0,19.22 0,13.5C0,6.04 6.04,0 13.5,0C20.96,0 27,6.04 27,13.5Z"></path><path opacity="0.25" d="M13.5,0C6.04,0 0,6.04 0,13.5C0,19.22 6.75,27 12.25,34.5C13,35.52 14.02,35.5 14.75,34.5C20.25,27 27,19.07 27,13.5C27,6.04 20.96,0 13.5,0ZM13.5,1C20.42,1 26,6.58 26,13.5C26,15.9 24.5,19.18 22.22,22.74C19.95,26.3 16.71,30.14 13.94,33.91C13.74,34.18 13.61,34.32 13.5,34.44C13.39,34.32 13.26,34.18 13.06,33.91C10.28,30.13 7.41,26.31 5.02,22.77C2.62,19.23 1,15.95 1,13.5C1,6.58 6.58,1 13.5,1Z"></path><circle fill="white" cx="13.5" cy="13.5" r="5.5"></circle></svg></div></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: block;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"><div class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-compact"><button class="mapboxgl-ctrl-attrib-button" type="button" aria-label="Toggle attribution"><span class="mapboxgl-ctrl-icon" aria-hidden="true" title="Toggle attribution"></span></button><div class="mapboxgl-ctrl-attrib-inner" role="list"><a href="https://www.mapbox.com/about/maps" target="_blank" title="Mapbox" aria-label="Mapbox">© Mapbox</a> <a href="https://www.openstreetmap.org/copyright/" target="_blank" title="OpenStreetMap" aria-label="OpenStreetMap">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://apps.mapbox.com/feedback/?owner=mapbox&amp;id=streets-v11&amp;access_token=pk.eyJ1IjoidW8yOTU2NjIiLCJhIjoiY21pZWc3OTVpMDBtbTNkczc3cmxlc3pwNiJ9.OHVq_-6T5rEVofcADuk6OQ#/-6.0328/36.7103/14" target="_blank" aria-label="Map feedback" rel="noopener nofollow">Improve this map</a></div></div></div></div></div>
+    </main>
+    
+    <script>
+        const circuito = new Circuito();
+        const cargadorSVG = new CargadorSVG();
+        const cargadorKML = new CargadorKML();
+    </script>
+
+</body></html>

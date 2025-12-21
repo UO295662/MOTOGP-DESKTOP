@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+    
+    <title>MOTOGP</title>
+    <meta name="author" content="Gael Horta Calzada">
+    <meta name="description" content="Documento basado en MotoGP">
+    <meta name="keywords" content="MotoGP,índice,página inicial">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css">
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css">
+    <link rel="icon" href="multimedia/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/carrusel.js"></script>
+    <script src="js/noticias.js"></script>
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+    <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="index.html" title="Inicio MotoGPDekstop" class="active">Inicio</a>
+        <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="circuito.html" title="Circuito MotoGPDekstop">Circuito</a>
+        <a href="meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+        <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+    <p>Estás en: Inicio</p>  
+    <main>  
+        <section><h2>Imágenes del circuito de Jerez</h2><img src="https://live.staticflickr.com/65535/54482620949_156b0533aa_m.jpg" alt="2025_04_27 Gran Premio de Motociclismo de Jerez"></section>
+        <section><h2>Últimas Noticias de MotoGP</h2><article><h3>Clasificación final Mundial MotoGP 2025</h3><p>La temporada 2025 del Campeonato del Mundo de MotoGP ha terminado y aquí tienes todas las clasificaciones finales de los galardones entregados en la gala final...</p><p>Fuente: motociclismo.es</p><a href="https://www.motociclismo.es/mundial-motogp/clasificacion-final-mundial-motogp-2025-pilotos-constructores-equipos_319171_102.html" target="_blank" rel="noopener noreferrer">Leer más</a></article><article><h3>MotoGP: Victorias, podios, poles y VR</h3><p>La carrera de MotoGP del Gran Premio de Austria disputada el pasado domingo 17 de abril de 2025 con victoria del español Marc Márquez fue la número 1.000 en ...</p><p>Fuente: motociclismo.es</p><a href="https://www.motociclismo.es/mundial-motogp/1000-carreras-mundial-500cc-motogp-victorias-podios-poles-vueltas-rapidas_314762_102.html" target="_blank" rel="noopener noreferrer">Leer más</a></article><article><h3>MotoGP 2025 en directo</h3><p>DIRECTO DE MOTOGP
+
+Sigue la carrera en directo de MotoGP.</p><p>Fuente: lne.es</p><a href="https://www.sport.es/es/motor/moto-gp/directo/" target="_blank" rel="noopener noreferrer">Leer más</a></article></section>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            const carrusel = new Carrusel("Jerez");
+            const noticias = new Noticias();
+        });
+    </script>
+
+</body></html>
