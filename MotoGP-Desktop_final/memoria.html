@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8" />
+    <title>MOTOGP</title>
+    <meta name="author" content="Gael Horta Calzada" />
+    <meta name="description" content="Juego de memoria basado en MotoGP" />
+    <meta name="keywords" content="MotoGP,juego,memoria,cartas" />
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/cards.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout-cards.css" />
+    <link rel="icon" href="multimedia/favicon.ico">
+    <script src="js/memoria.js"></script>
+    <script src="js/cronometro.js"></script>
+</head>
+
+<body>
+    <!-- Datos con el contenidos que aparece en el navegador -->
+    <header>
+    <h1><a href="index.html" title="Ir a la página principal">MotoGP Desktop</a></h1>
+    <nav>
+        <a href="index.html" title="Inicio MotoGPDekstop">Inicio</a>
+        <a href="piloto.html" title="Piloto MotoGPDekstop">Piloto</a>
+        <a href="circuito.html" title="Circuito MotoGPDekstop">Circuito</a>
+        <a href="meteorologia.html" title="Meteorología MotoGPDekstop">Meteorología</a>
+        <a href="clasificaciones.php" title="Clasificaciones MotoGPDekstop">Clasificaciones</a>
+        <a href="juegos.html" title="Juegos MotoGPDekstop">Juegos</a>
+        <a href="ayuda.html" title="Ayuda MotoGPDekstop">Ayuda</a>
+    </nav>
+    </header>
+    <p>Estás en: <a href="index.html">Inicio</a> >> <a href="juegos.html">Juegos</a>>>Memoria</p>
+    <main> 
+        <h2>Juego de memoria con cartas</h2> 
+        <p>00:00.0</p>
+        <p>Haz clic en las cartas para voltearlas y encontrar las parejas de pilotos. Al seleccionar dos iguales, estas quedarán reveladas permanentemente; si no coinciden, volverán a su posición original automáticamente.</p>
+       
+
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/honda.svg" alt="Logo-Honda">
+        </article>
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/honda.svg" alt="Logo-Honda">
+        </article>
+
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/yamaha.svg" alt="Logo-Yamaha">
+        </article>
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/yamaha.svg" alt="Logo-Yamaha">
+        </article>
+
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/ducati.svg" alt="Logo-Ducati">
+        </article>
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/ducati.svg" alt="Logo-Ducati">
+        </article>
+
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/ktm.svg" alt="Logo-KTM">
+        </article>
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/ktm.svg" alt="Logo-KTM">
+        </article>
+
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/aprilia.svg" alt="Logo-Aprilia">
+        </article>
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/aprilia.svg" alt="Logo-Aprilia">
+        </article>
+
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/motogp.svg" alt="Logo-MotoGP">
+        </article>
+        <article>
+            <h3>Memory Card</h3>
+            <img src="multimedia/logos/motogp.svg" alt="Logo-MotoGP">
+        </article>
+    </main>
+    <script>
+        const memoria = new Memoria();
+    </script>
+</body>
+</html>

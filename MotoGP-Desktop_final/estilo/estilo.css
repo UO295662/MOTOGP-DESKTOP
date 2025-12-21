@@ -1,0 +1,75 @@
+/*Gael Horta Calzada UO295662 */
+/* Estilos generales del proyecto MotoGP-Desktop*/
+body { /*Especificidad 0,0,1 */
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    color: #0b1c48;
+    background-color: #ecd5bb;
+}
+
+header { /*Especificidad 0,0,1 */
+    background-color: #c3ceda;
+    /* El color de texto (#0b1c48) se hereda del selector 'body'. */
+}
+
+header a { /*Especificidad 0,0,2 */
+    text-decoration-line: none; 
+}
+
+header a:hover { /*Especificidad 0,1,2 */
+    color: #a02b3e;
+    text-decoration-line: underline;
+    /* El fondo es transparente por defecto y visualmente toma el color del padre ('header'). */
+}
+
+h1 a{ /*Especificidad 0,0,2 */
+    color: #710117;
+    /* El fondo es transparente y visualmente toma el color del contenedor padre ('header'). */
+}
+
+nav a{ /*Especificidad 0,0,2 */
+    color: #043D58;
+    /* El fondo es transparente y visualmente toma el color del contenedor padre ('header' o 'nav'). */
+}
+
+.active{ /*Especificidad 0,1,0 */
+    background-color: #fff;
+    color: #000000;
+    font-weight: bold;
+}
+
+header + p { /*Especificidad 0,0,2 */
+    font-size: 0.875rem;
+}
+
+main > div {/*Especificidad 0,0,2 */
+    width: 100%;
+    height: 500px;
+    background-color: #e0e0e0; 
+    border: 1px solid #ccc;
+    margin-top: 1em;
+    border-radius: 8px;
+    display: none;
+    /* El color de texto (#0b1c48) se hereda del selector 'body'. */
+}
+main label {
+    display: block;       
+    margin-top: 20px;     
+    margin-bottom: 8px;   
+    font-weight: bold;    
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea { /* Especificidad 0,1,1 (inputs) y 0,0,1 (select/textarea) */
+    width: 100%;
+    padding: 0.8em;        
+    margin-bottom: 1.2em;     
+    border: 0.1rem solid #ccc; 
+    border-radius: 0.3em;      
+    background-color: #fff;
+    font-family: inherit;
+    box-sizing: border-box;
+    font-size: 1rem;           
+    /* El color de texto (#0b1c48) se hereda del selector 'body'. */
+}

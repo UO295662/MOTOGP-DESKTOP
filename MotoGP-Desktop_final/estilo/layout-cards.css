@@ -1,0 +1,29 @@
+main {/*Especificidad 0,0,1 */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+    justify-items: center;
+    max-width: 90%; 
+    margin: 2em auto; 
+    padding: 1em;
+}
+
+main > h2  {/*Especificidad 0,0,2 */
+    grid-column: 1 / -1; 
+    text-align: center;
+}
+main > p{/*Especificidad 0,0,2 */
+    grid-column: 1 / -1; 
+    text-align: center;
+}
+@media (min-width: 320px) and (max-width: 799px) {
+    
+    main {/*Especificidad 0,0,1 */
+        grid-template-columns: repeat(2, 1fr);
+        /*Redefinición de grid-template-columns:Reduce el número de columnas en pantallas pequeñas*/
+        gap: 0.25em;
+        /*Redifinición de gap para pantallas pequeñas */
+    }
+
+}
+
